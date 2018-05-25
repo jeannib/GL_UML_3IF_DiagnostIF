@@ -1,0 +1,52 @@
+/*************************************************************************
+Empreinte  -  description
+-------------------
+début                : 04/05/2018
+copyright            : (C) 2018 par COLONGES Vincent
+e-mail               : vincent.colonges@insa-lyon.fr
+*************************************************************************/
+
+//---------- Interface de la classe <Empreinte> (fichier Empreinte.h) ----------------
+#if ! defined ( EMPREINTE_H )
+#define EMPREINTE_H
+
+//--------------------------------------------------- Interfaces utilisées
+#include <unordered_map>
+#include <string>
+using namespace std;
+
+//------------------------------------------------------------- Constantes
+
+//------------------------------------------------------------------ Types
+
+//------------------------------------------------------------------------
+// Rôle de la classe <Empreinte>
+// 
+//------------------------------------------------------------------------
+
+class Empreinte
+{
+	//----------------------------------------------------------------- PUBLIC
+
+public:
+	//----------------------------------------------------- Méthodes publiques
+
+	//-------------------------------------------- Constructeurs - destructeur
+	Empreinte(string attributs, string valeurs);
+
+	virtual ~Empreinte();
+
+	//------------------------------------------------------------------ PRIVE
+
+protected:
+	//----------------------------------------------------- Méthodes protégées
+
+	//----------------------------------------------------- Attributs protégés
+	unordered_map<string, double> attrDouble;
+	unordered_map<string, string> attrString;
+
+};
+
+//-------------------------------- Autres définitions dépendantes de <Empreinte>
+
+#endif // EMPREINTE_H
