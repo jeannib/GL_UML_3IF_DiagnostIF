@@ -23,7 +23,10 @@ e-mail               : vincent.colonges@insa-lyon.fr
 
 
 //-------------------------------------------- Constructeurs - destructeur
-EmpreintePatient::EmpreintePatient(string attributs, string valeurs)
+<<<<<<< HEAD
+=======
+EmpreintePatient::EmpreintePatient(string attributs, string valeurs) : Empreinte(attributs, valeurs)
+>>>>>>> a5bd894fe8e3c6bc2f55a2947aef60f4e44e1b54
 {
 
 } //----- Fin de EmpreintePatient
@@ -37,4 +40,7 @@ EmpreintePatient::~EmpreintePatient()
 
   //------------------------------------------------------------------ PRIVE
 
+<<<<<<< HEAD
+=======
   //----------------------------------------------------- Méthodes protégées
+>>>>>>> a5bd894fe8e3c6bc2f55a2947aef60f4e44e1b54

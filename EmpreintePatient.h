@@ -14,6 +14,10 @@ e-mail               : vincent.colonges@insa-lyon.fr
 #include <unordered_map>
 #include <string>
 #include "Empreinte.h"
+<<<<<<< HEAD
+=======
+
+>>>>>>> a5bd894fe8e3c6bc2f55a2947aef60f4e44e1b54
 using namespace std;
 
 //------------------------------------------------------------- Constantes
@@ -48,4 +52,7 @@ protected:
 
 //-------------------------------- Autres définitions dépendantes de <EmpreintePatient>
 
+<<<<<<< HEAD
+=======
 #endif // EMPREINTEPATIENT_H
+>>>>>>> a5bd894fe8e3c6bc2f55a2947aef60f4e44e1b54
