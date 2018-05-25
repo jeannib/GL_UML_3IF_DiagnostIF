@@ -24,6 +24,15 @@ e-mail               : vincent.colonges@insa-lyon.fr
 
 //----------------------------------------------------- Méthodes publiques
 
+unordered_map<string, pair<double, double>> Maladie::getCaracsDouble()
+{
+	return histoDoubleRef;
+}
+
+unordered_map<string, unordered_map<string, double>> Maladie::getCaracsString()
+{
+	return histoStringRef;
+}
 
 //-------------------------------------------- Constructeurs - destructeur
 Maladie::Maladie(string nom)

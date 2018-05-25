@@ -12,10 +12,8 @@ e-mail               : vincent.colonges@insa-lyon.fr
 
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
-<<<<<<< HEAD
-=======
+#include <unordered_map>
 
->>>>>>> a5bd894fe8e3c6bc2f55a2947aef60f4e44e1b54
 using namespace std;
 
 //------------------------------------------------------------- Constantes
@@ -33,6 +31,9 @@ class Maladie
 
 public:
 	//----------------------------------------------------- Méthodes publiques
+	unordered_map<string, unordered_map<string, double>> getCaracsString();
+	unordered_map<string, pair<double, double>> getCaracsDouble();
+
 
 	//-------------------------------------------- Constructeurs - destructeur
 	Maladie(string nom);
@@ -46,12 +47,11 @@ protected:
 
 	//----------------------------------------------------- Attributs protégés
 	string nom;
+	unordered_map<string, pair<double, double>> histoDoubleRef;
+	unordered_map<string, unordered_map<string, double>> histoStringRef;
 
 };
 
 //-------------------------------- Autres définitions dépendantes de <Maladie>
 
-<<<<<<< HEAD
-=======
 #endif // MALADIE_H
->>>>>>> a5bd894fe8e3c6bc2f55a2947aef60f4e44e1b54
