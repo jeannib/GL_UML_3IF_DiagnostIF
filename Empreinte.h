@@ -13,6 +13,8 @@ e-mail               : vincent.colonges@insa-lyon.fr
 //--------------------------------------------------- Interfaces utilisées
 #include <unordered_map>
 #include <string>
+#include <iostream>
+#include <cstring>
 
 using namespace std;
 
@@ -33,7 +35,7 @@ public:
 	//----------------------------------------------------- Méthodes publiques
 
 	//-------------------------------------------- Constructeurs - destructeur
-	Empreinte(string attributs, string valeurs);
+	Empreinte(string attributs, string valeurs, unordered_map<string,string> config);
 
 	virtual ~Empreinte();
 

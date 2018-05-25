@@ -29,6 +29,37 @@ Maladie::Maladie(string nom)
 
 } //----- Fin de Maladie
 
+string Maladie::getNom()
+{
+	return this->nom;
+}
+
+unordered_map<string, pair<double,double>> Maladie::getCaracsDouble()
+{
+	return this->histoDoubleRef;
+}
+
+unordered_map<string, unordered_map<string, double>> Maladie::getCaracsString()
+{
+	return this->histoStringRef;
+}
+
+void Maladie::displayCaracs()
+{
+	for(auto elem : this->histoDoubleRef)
+	{
+	   cout << "Attribut : " << elem.first << " ; Moyenne : " << elem.second.first << " ; Ecart-type : "<< elem.second.second << "\n";
+	}
+	for(auto elem : this->histoStringRef)
+	{
+	   cout << "Attribut : " << elem.first;
+	   for(auto newElem : elem.second)
+	   {
+			cout << "; Valeur : " << newElem.first << "; Frequence : " << newElem.second;
+		}
+		cout<<"\n";
+	}
+}
 
 Maladie::~Maladie()
 {

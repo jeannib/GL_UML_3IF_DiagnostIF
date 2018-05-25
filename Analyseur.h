@@ -13,9 +13,13 @@ e-mail               : vincent.colonges@insa-lyon.fr
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
 #include <set>
+#include <vector>
 #include <unordered_map>
 #include <fstream>
+#include <iostream>
 #include "Maladie.h"
+#include "Empreinte.h"
+#include "EmpreinteReference.h"
 
 using namespace std;
 
@@ -36,9 +40,13 @@ public:
 	//----------------------------------------------------- Méthodes publiques
 
 	//-------------------------------------------- Constructeurs - destructeur
+	Analyseur();
+	
 	Analyseur(ifstream ficRef, ifstream ficConfig);
 
 	virtual ~Analyseur();
+	
+	void chargerBD(ifstream& ficRef, ifstream& ficConfig);
 
 	//------------------------------------------------------------------ PRIVE
 

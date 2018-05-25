@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include "Analyseur.h"
 
 using namespace std;
 
@@ -39,16 +40,12 @@ int main()
 	{
 		cout << "Utilisateur inexistant." << endl;
 	}
-	
-	
-	cout << "fin";
-	int test;
-	cin >> test;
     return 0;
 }
 
 void menu() {
 	int choix;
+	Analyseur analyseur;
 	do {
 		cout << "1 -  Charger un fichier de référence" << endl;
 		cout << "2 -  Dépistage général d'empreinte(s)" << endl;
@@ -59,8 +56,26 @@ void menu() {
 		cin >> choix;
 		switch (choix) {
 		case 1 :
+		{
+			string strRef;
+			string strConf;
+			cout << "Fichier de référence" << endl;
+			cin >> strRef;
+			ifstream ficRef(strRef);
+			if (ficRef.is_open())
+			{
+				cout << "Fichier de configuration" << endl;
+				cin >> strConf;
+				ifstream ficConf(strConf);
+				if (ficConf.is_open())
+				{
+					analyseur.chargerBD(ficRef, ficConf);
+				}
+			}
+		}
 			break;
 		case 2:
+			cout << "2" << endl;
 			break;
 		}
 	} while (choix != 6);

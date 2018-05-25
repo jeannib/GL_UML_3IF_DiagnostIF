@@ -11,7 +11,9 @@ e-mail               : vincent.colonges@insa-lyon.fr
 #define MALADIE_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include <iostream>
 #include <string>
+#include <unordered_map>
 
 using namespace std;
 
@@ -35,7 +37,14 @@ public:
 	Maladie(string nom);
 
 	virtual ~Maladie();
+	
+	string getNom();
 
+	unordered_map<string, pair<double,double>> getCaracsDouble();
+	
+	unordered_map<string, unordered_map<string, double>> getCaracsString();
+	
+	void displayCaracs();
 	//------------------------------------------------------------------ PRIVE
 
 protected:
@@ -43,6 +52,8 @@ protected:
 
 	//----------------------------------------------------- Attributs protégés
 	string nom;
+	unordered_map<string, pair<double,double>> histoDoubleRef;
+	unordered_map<string, unordered_map<string, double>> histoStringRef;
 
 };
 

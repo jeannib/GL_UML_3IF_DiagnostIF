@@ -4,7 +4,7 @@ EDL=g++
 RMFLAGS=-f
 COMPFLAGS = -ansi -pedantic  -Wall -std=c++11 -g
 #make DEBUG=no pour compiler en release.
-DEBUG=yes
+DEBUG=no
 EXE=application
 EXEPATH=./
 SRC=$(wildcard *.cpp)

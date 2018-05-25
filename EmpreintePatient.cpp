@@ -23,7 +23,7 @@ e-mail               : vincent.colonges@insa-lyon.fr
 
 
 //-------------------------------------------- Constructeurs - destructeur
-EmpreintePatient::EmpreintePatient(string attributs, string valeurs) : Empreinte(attributs, valeurs)
+EmpreintePatient::EmpreintePatient(string attributs, string valeurs, unordered_map<string,string> config) : Empreinte(attributs, valeurs, config)
 {
 
 } //----- Fin de EmpreintePatient

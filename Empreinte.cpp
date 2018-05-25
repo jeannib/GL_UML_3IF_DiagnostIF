@@ -23,8 +23,24 @@ e-mail               : vincent.colonges@insa-lyon.fr
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Empreinte::Empreinte(string attributs, string valeurs)
+Empreinte::Empreinte(string attributs, string valeurs, unordered_map<string,string> config)
 {
+
+	do{
+		string key = attributs.substr(0,attributs.find_first_of(';'));
+		string value = valeurs.substr(0,valeurs.find_first_of(';'));
+		
+		attributs.erase(0,attributs.find_first_of(';')+1);
+		valeurs.erase(0,valeurs.find_first_of(';')+1);
+		//cout << key << "   " << config[key] << endl;
+		
+		if(strcmp(config[key].c_str(),"string") == 0){
+			attrString[key] = value;
+		}else if(strcmp(config[key].c_str(),"double")==0){
+			attrDouble[key] = atof(value.c_str());
+		}
+		
+	}while(attributs.find_first_of(';') != string::npos);
 	
 } //----- Fin de Empreinte
 

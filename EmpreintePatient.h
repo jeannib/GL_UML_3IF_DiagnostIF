@@ -34,7 +34,7 @@ public:
 	//----------------------------------------------------- Méthodes publiques
 
 	//-------------------------------------------- Constructeurs - destructeur
-	EmpreintePatient(string attributs, string valeurs);
+	EmpreintePatient(string attributs, string valeurs, unordered_map<string,string> config);
 
 	virtual ~EmpreintePatient();
 
