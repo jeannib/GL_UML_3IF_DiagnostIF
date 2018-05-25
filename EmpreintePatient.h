@@ -14,6 +14,7 @@ e-mail               : vincent.colonges@insa-lyon.fr
 #include <unordered_map>
 #include <string>
 #include "Empreinte.h"
+
 using namespace std;
 
 //------------------------------------------------------------- Constantes

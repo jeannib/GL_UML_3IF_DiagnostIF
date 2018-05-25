@@ -12,7 +12,7 @@ e-mail               : vincent.colonges@insa-lyon.fr
 
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
-#include "stdafx.h"
+
 using namespace std;
 
 //------------------------------------------------------------- Constantes

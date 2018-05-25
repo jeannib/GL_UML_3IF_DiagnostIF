@@ -23,9 +23,9 @@ e-mail               : vincent.colonges@insa-lyon.fr
 
 
 //-------------------------------------------- Constructeurs - destructeur
-EmpreinteReference::EmpreinteReference(string attributs, string valeurs)
+EmpreinteReference::EmpreinteReference(string attributs, string valeurs) : Empreinte(attributs, valeurs)
 {
-
+	
 } //----- Fin de EmpreinteReference
 
 

@@ -13,6 +13,7 @@ e-mail               : vincent.colonges@insa-lyon.fr
 //--------------------------------------------------- Interfaces utilisées
 #include <unordered_map>
 #include <string>
+
 using namespace std;
 
 //------------------------------------------------------------- Constantes

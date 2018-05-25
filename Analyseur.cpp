@@ -10,7 +10,6 @@ e-mail               : vincent.colonges@insa-lyon.fr
 
 //---------------------------------------------------------------- INCLUDE
 #include "Analyseur.h"
-#include "stdafx.h"
 
 //-------------------------------------------------------- Include système
 

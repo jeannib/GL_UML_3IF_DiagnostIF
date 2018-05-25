@@ -16,7 +16,7 @@ e-mail               : vincent.colonges@insa-lyon.fr
 #include <unordered_map>
 #include <fstream>
 #include "Maladie.h"
-#include "stdafx.h"
+
 using namespace std;
 
 //------------------------------------------------------------- Constantes
