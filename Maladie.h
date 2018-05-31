@@ -14,6 +14,7 @@ e-mail               : vincent.colonges@insa-lyon.fr
 #include <iostream>
 #include <string>
 #include <unordered_map>
+#include "EmpreinteReference.h"
 
 using namespace std;
 
@@ -38,13 +39,15 @@ public:
 
 	virtual ~Maladie();
 	
-	string getNom();
+	string getNom() const;
 
 	unordered_map<string, pair<double,double>> getCaracsDouble();
 	
 	unordered_map<string, unordered_map<string, double>> getCaracsString();
 	
 	void displayCaracs();
+	
+	void ajouterEmpreinte(EmpreinteReference empreinte);
 	//------------------------------------------------------------------ PRIVE
 
 protected:

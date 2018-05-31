@@ -29,7 +29,7 @@ Maladie::Maladie(string nom)
 
 } //----- Fin de Maladie
 
-string Maladie::getNom()
+string Maladie::getNom() const
 {
 	return this->nom;
 }
@@ -59,6 +59,15 @@ void Maladie::displayCaracs()
 		}
 		cout<<"\n";
 	}
+}
+
+void Maladie::ajouterEmpreinte(EmpreinteReference empreinte){
+	for(auto attrDouble : empreinte.getAttrDouble()){
+		this->histoDoubleRef[attrDouble.first] = make_pair(attrDouble.second,attrDouble.second*2);
+	}
+	
+	this->displayCaracs();
+	//this->histoDoubleRef[
 }
 
 Maladie::~Maladie()

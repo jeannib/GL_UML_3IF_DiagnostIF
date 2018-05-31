@@ -36,6 +36,10 @@ public:
 
 	//-------------------------------------------- Constructeurs - destructeur
 	Empreinte(string attributs, string valeurs, unordered_map<string,string> config);
+	
+	unordered_map<string, double> getAttrDouble();
+	
+	unordered_map<string, string> getAttrString();
 
 	virtual ~Empreinte();
 

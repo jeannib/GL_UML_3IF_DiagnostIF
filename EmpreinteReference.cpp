@@ -29,6 +29,9 @@ EmpreinteReference::EmpreinteReference(string attributs, string valeurs, unorder
 	this->maladie = valeurs.substr(valeurs.find_last_of(';')+1,valeurs.length());
 } //----- Fin de EmpreinteReference
 
+string EmpreinteReference::getMaladie(){
+	return this->maladie;
+}
 
 EmpreinteReference::~EmpreinteReference()
 {

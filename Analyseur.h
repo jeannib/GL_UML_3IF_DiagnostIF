@@ -27,6 +27,12 @@ using namespace std;
 
 //------------------------------------------------------------------ Types
 
+struct set_compare{
+	bool operator()(const Maladie& a,const Maladie& b) const{
+		return a.getNom() < b.getNom();
+	}
+};
+
 //------------------------------------------------------------------------
 // Rôle de la classe <Analyseur>
 // 
@@ -54,8 +60,9 @@ protected:
 	//----------------------------------------------------- Méthodes protégées
 
 	//----------------------------------------------------- Attributs protégés
-	set<Maladie> maladies;
+	set<Maladie,set_compare> maladies;
 	unordered_map<string, string> config;
+	int test;
 
 };
 

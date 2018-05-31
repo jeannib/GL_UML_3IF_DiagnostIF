@@ -55,12 +55,27 @@ void Analyseur::chargerBD(ifstream& ficRef, ifstream& ficConfig)
 	//---
 	
 	//-- Maladies
-	vector<Empreinte> empreintes;
+	vector<EmpreinteReference> empreintes;
 	getline(ficRef, line);
 	string attributs = line;
 	while (getline(ficRef, line)) {
 		EmpreinteReference empreinte(attributs,line,this->config); 
 		empreintes.push_back(empreinte);
+	}
+	for(EmpreinteReference emp : empreintes){
+		//Maladie* m = new Maladie(emp.getMaladie());
+		Maladie m(emp.getMaladie());
+		this->maladies.insert(m);
+	}
+	
+	for(Maladie m : this->maladies){
+		for(EmpreinteReference emp : empreintes){
+				if(strcmp(m.getNom().c_str(),emp.getMaladie().c_str())==0){
+					cout << m.getNom() << endl;
+					m.ajouterEmpreinte(emp);
+				}
+		}
+		
 	}
 	//---
 	

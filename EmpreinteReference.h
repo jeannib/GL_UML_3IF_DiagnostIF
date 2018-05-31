@@ -33,6 +33,8 @@ public:
 
 	//-------------------------------------------- Constructeurs - destructeur
 	EmpreinteReference(string attributs, string valeurs, unordered_map<string,string> config);
+	
+	string getMaladie();
 
 	virtual ~EmpreinteReference();
 

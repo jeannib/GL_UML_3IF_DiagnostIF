@@ -44,6 +44,14 @@ Empreinte::Empreinte(string attributs, string valeurs, unordered_map<string,stri
 	
 } //----- Fin de Empreinte
 
+unordered_map<string, double> Empreinte::getAttrDouble(){
+	return this->attrDouble;
+}
+
+unordered_map<string, string> Empreinte::getAttrString(){
+	return this->attrString;
+}
+
 
 Empreinte::~Empreinte()
 {
