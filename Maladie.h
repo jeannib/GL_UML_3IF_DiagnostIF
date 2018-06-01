@@ -15,6 +15,9 @@ e-mail               : vincent.colonges@insa-lyon.fr
 #include <string>
 #include <unordered_map>
 #include "EmpreinteReference.h"
+#include "EmpreintePatient.h"
+#include <math.h>
+#include <cstring>
 
 using namespace std;
 
@@ -45,9 +48,13 @@ public:
 	
 	unordered_map<string, unordered_map<string, double>> getCaracsString();
 	
-	void displayCaracs();
+	void displayCaracs() const;
 	
 	void ajouterEmpreinte(EmpreinteReference empreinte);
+	
+	void finaliser();
+	
+	double analyserEmpreinte(EmpreintePatient emp);
 	//------------------------------------------------------------------ PRIVE
 
 protected:
@@ -57,6 +64,8 @@ protected:
 	string nom;
 	unordered_map<string, pair<double,double>> histoDoubleRef;
 	unordered_map<string, unordered_map<string, double>> histoStringRef;
+	int nbEmpreintes = 0;
+	int nbAttributs = 0;
 
 };
 

@@ -37,13 +37,19 @@ Analyseur::Analyseur(ifstream ficRef, ifstream ficConfig)
 
 Analyseur::~Analyseur()
 {
-	maladies.clear();
 	config.clear();
 
 } //----- Fin de ~Analyseur
 
+EmpreintePatient Analyseur::chargerPatient(string line)
+{
+	
+}
+
 void Analyseur::chargerBD(ifstream& ficRef, ifstream& ficConfig)
 {
+	this->maladies.clear();
+	
 	//-- Configuration
 	string line;
 	getline(ficConfig, line); //skip 1st line
@@ -63,28 +69,52 @@ void Analyseur::chargerBD(ifstream& ficRef, ifstream& ficConfig)
 		empreintes.push_back(empreinte);
 	}
 	for(EmpreinteReference emp : empreintes){
-		//Maladie* m = new Maladie(emp.getMaladie());
 		Maladie m(emp.getMaladie());
-		this->maladies.insert(m);
-	}
-	
-	for(Maladie m : this->maladies){
-		for(EmpreinteReference emp : empreintes){
-				if(strcmp(m.getNom().c_str(),emp.getMaladie().c_str())==0){
-					cout << m.getNom() << endl;
-					m.ajouterEmpreinte(emp);
-				}
+		bool exists = false;
+		for(vector<Maladie>::iterator it = this->maladies.begin(); it != this->maladies.end(); ++it) {
+			if(m.getNom()==it->getNom())
+				exists = true;
 		}
+		if(!exists)
+			this->maladies.push_back(m);
 		
 	}
+	
+	for(vector<Maladie>::iterator it = this->maladies.begin(); it != this->maladies.end(); ++it) {
+		for(EmpreinteReference emp : empreintes){
+				if(strcmp(it->getNom().c_str(),emp.getMaladie().c_str())==0){
+					it->ajouterEmpreinte(emp);
+				}
+		}
+		it->finaliser();	
+	}
 	//---
-	
-	
-	
-	/*for(auto elem : config)
-	{
-	   cout << elem.first << " : " << elem.second << "\n";
-	}*/
+}
+
+void Analyseur::afficherMaladies(){
+	for(Maladie m : this->maladies){
+		m.displayCaracs();
+	}
+}
+
+void Analyseur::depistageSpecifique(EmpreintePatient emp, Maladie m){
+	double risque = m.analyserEmpreinte(emp);
+	cout<<m.getNom()<<" : " <<risque<<"\n";
+}
+
+Maladie* Analyseur::findMaladie(string mal)
+{
+	for(vector<Maladie>::iterator it = this->maladies.begin(); it != this->maladies.end(); ++it) {
+		if(strcmp(it->getNom().c_str(),mal.c_str() ) == 0 )
+		{
+			return &(*it);
+		}
+	}
+	return nullptr;
+}
+
+unordered_map<string, string> Analyseur::getConfig(){
+	return this->config;
 }
 
 

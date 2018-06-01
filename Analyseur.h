@@ -27,12 +27,6 @@ using namespace std;
 
 //------------------------------------------------------------------ Types
 
-struct set_compare{
-	bool operator()(const Maladie& a,const Maladie& b) const{
-		return a.getNom() < b.getNom();
-	}
-};
-
 //------------------------------------------------------------------------
 // Rôle de la classe <Analyseur>
 // 
@@ -53,6 +47,16 @@ public:
 	virtual ~Analyseur();
 	
 	void chargerBD(ifstream& ficRef, ifstream& ficConfig);
+	
+	void afficherMaladies();
+	
+	Maladie* findMaladie(string mal);
+	
+	void depistageSpecifique(EmpreintePatient emp, Maladie m);
+	
+	EmpreintePatient chargerPatient(string line);
+	
+	unordered_map<string,string> getConfig();
 
 	//------------------------------------------------------------------ PRIVE
 
@@ -60,9 +64,8 @@ protected:
 	//----------------------------------------------------- Méthodes protégées
 
 	//----------------------------------------------------- Attributs protégés
-	set<Maladie,set_compare> maladies;
+	vector<Maladie> maladies;
 	unordered_map<string, string> config;
-	int test;
 
 };
 

@@ -46,6 +46,7 @@ int main()
 void menu() {
 	int choix;
 	Analyseur analyseur;
+	ifstream ficConf;
 	do {
 		cout << "1 -  Charger un fichier de référence" << endl;
 		cout << "2 -  Dépistage général d'empreinte(s)" << endl;
@@ -66,7 +67,7 @@ void menu() {
 			{
 				cout << "Fichier de configuration" << endl;
 				cin >> strConf;
-				ifstream ficConf(strConf);
+				ficConf.open(strConf);
 				if (ficConf.is_open())
 				{
 					analyseur.chargerBD(ficRef, ficConf);
@@ -76,6 +77,38 @@ void menu() {
 			break;
 		case 2:
 			cout << "2" << endl;
+			break;
+		case 3:
+		{
+			string emp;
+			string mal;
+			cout << "Empreinte a analyser" <<endl;
+			cin>> emp;
+			ifstream ficEmp(emp);
+			if(ficEmp.is_open())
+			{
+				cout << "Maladie a analyser" <<endl;
+				cin>> mal;
+				if(analyseur.findMaladie(mal) != nullptr){
+					Maladie m = *analyseur.findMaladie(mal);
+					string line, attr;
+					getline(ficEmp, attr);
+					while(getline(ficEmp, line)){
+						EmpreintePatient empreinte(attr, line, analyseur.getConfig());
+						analyseur.depistageSpecifique(empreinte, m);
+					}
+					
+					//m.displayCaracs();
+					//analyseur.depistageSpecifique(empreinte, m);
+				}else{
+					cout << "Maladie introuvable dans nos données" << endl;
+				}
+			}
+		}
+			break;
+			
+		case 4:
+			analyseur.afficherMaladies();
 			break;
 		}
 	} while (choix != 6);
