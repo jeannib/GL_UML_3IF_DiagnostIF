@@ -101,6 +101,9 @@ double Maladie::analyserEmpreinte(EmpreintePatient emp)
 {
 	double risque=0, somme=0;
 	for (unordered_map<string,pair<double,double>>::iterator it=this->histoDoubleRef.begin(); it!=this->histoDoubleRef.end(); ++it){
+		cout << emp.getAttrDouble()[it->first] << endl;
+		cout << it->second.first << endl;
+		cout << it->second.second << endl;
 		somme+=(sqrt( pow(emp.getAttrDouble()[it->first] - it->second.first, 2))) / 2* it->second.second;
 	}
 	cout << somme << endl;
