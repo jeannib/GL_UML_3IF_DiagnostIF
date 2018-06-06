@@ -82,7 +82,7 @@ void Analyseur::chargerBD(ifstream& ficRef, ifstream& ficConfig)
 	
 	for(vector<Maladie>::iterator it = this->maladies.begin(); it != this->maladies.end(); ++it) {
 		for(EmpreinteReference emp : empreintes){
-				if(strcmp(it->getNom().c_str(),emp.getMaladie().c_str())==0){
+				if(it->getNom() == emp.getMaladie()){
 					it->ajouterEmpreinte(emp);
 				}
 		}
@@ -105,7 +105,7 @@ void Analyseur::depistageSpecifique(EmpreintePatient emp, Maladie m){
 Maladie* Analyseur::findMaladie(string mal)
 {
 	for(vector<Maladie>::iterator it = this->maladies.begin(); it != this->maladies.end(); ++it) {
-		if(strcmp(it->getNom().c_str(),mal.c_str() ) == 0 )
+		if(it->getNom() == mal)
 		{
 			return &(*it);
 		}

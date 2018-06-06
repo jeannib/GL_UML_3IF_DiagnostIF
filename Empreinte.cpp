@@ -32,11 +32,10 @@ Empreinte::Empreinte(string attributs, string valeurs, unordered_map<string,stri
 		
 		attributs.erase(0,attributs.find_first_of(';')+1);
 		valeurs.erase(0,valeurs.find_first_of(';')+1);
-		//cout << key << "   " << config[key] << endl;
 		
-		if(strcmp(config[key].c_str(),"string") == 0){
+		if(config[key] == "string"){
 			attrString[key] = value;
-		}else if(strcmp(config[key].c_str(),"double")==0){
+		}else if(config[key] == "double"){
 			attrDouble[key] = atof(value.c_str());
 		}
 		

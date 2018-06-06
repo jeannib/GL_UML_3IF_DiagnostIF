@@ -46,7 +46,7 @@ unordered_map<string, unordered_map<string, double>> Maladie::getCaracsString()
 
 void Maladie::displayCaracs() const
 {
-	if(strcmp(this->getNom().c_str(),"")==0){
+	if(this->getNom() == ""){
 		cout << "Personne saine" << endl;
 	}else{
 		cout << this->getNom() << endl;
