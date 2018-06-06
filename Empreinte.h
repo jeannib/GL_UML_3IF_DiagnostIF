@@ -14,7 +14,6 @@ e-mail               : vincent.colonges@insa-lyon.fr
 #include <unordered_map>
 #include <string>
 #include <iostream>
-#include <cstring>
 
 using namespace std;
 

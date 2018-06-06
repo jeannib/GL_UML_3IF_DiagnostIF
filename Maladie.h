@@ -17,7 +17,6 @@ e-mail               : vincent.colonges@insa-lyon.fr
 #include "EmpreinteReference.h"
 #include "EmpreintePatient.h"
 #include <math.h>
-#include <cstring>
 
 using namespace std;
 

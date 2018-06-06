@@ -50,7 +50,10 @@ void Maladie::displayCaracs() const
 		cout << "Personne saine" << endl;
 	}else{
 		cout << this->getNom() << endl;
+		cout << this->getNom().length() << endl;
 	}
+	
+	
 	for(auto elem : this->histoDoubleRef)
 	{
 	   cout << "Attribut : " << elem.first << " ; Moyenne : " << elem.second.first << " ; Ecart-type : "<< elem.second.second << "\n";
@@ -71,12 +74,12 @@ void Maladie::ajouterEmpreinte(EmpreinteReference empreinte)
 	for(auto attrDouble : empreinte.getAttrDouble()){
 		pair<double,double> paire(histoDoubleRef[attrDouble.first].first+attrDouble.second,histoDoubleRef[attrDouble.first].second+attrDouble.second*attrDouble.second);
 		this->histoDoubleRef[attrDouble.first] = paire;
-		nbAttributs++;
+		//nbAttributs++;
 	}
 	
 	for(auto attrString : empreinte.getAttrString()){
 		this->histoStringRef[attrString.first][attrString.second]+=1;
-		nbAttributs++;
+		//nbAttributs++;
 	}
 	
 	this->nbEmpreintes++;
@@ -99,21 +102,34 @@ void Maladie::finaliser()
 
 double Maladie::analyserEmpreinte(EmpreintePatient emp)
 {
-	double risque=0, somme=0;
+	double risque=0, somme=0, square=0, puissance=0, ratio=0;
 	for (unordered_map<string,pair<double,double>>::iterator it=this->histoDoubleRef.begin(); it!=this->histoDoubleRef.end(); ++it){
-		cout << emp.getAttrDouble()[it->first] << endl;
-		cout << it->second.first << endl;
-		cout << it->second.second << endl;
-		somme+=(sqrt( pow(emp.getAttrDouble()[it->first] - it->second.first, 2))) / 2* it->second.second;
-	}
-	cout << somme << endl;
-	
-	/*for (unordered_map<string,unordered_map<string,double>>::iterator it=this->histoStringRef.begin(); it!=this->histoStringRef.end(); ++it){
-		if(it->second.find(emp.getAttrString()[it->first]) != it->second.end()){
-				somme+= it->second[emp.getAttrString()[it->first]];
+		puissance=pow(emp.getAttrDouble()[it->first] - it->second.first,2);
+		
+		square=sqrt(puissance);
+		ratio=square/(3*it->second.second);
+		if(ratio>1){
+			somme-= abs(1-ratio);
 		}
-	}*/
-	risque = (somme/ this->nbAttributs) * 100.0;
+		else{
+			somme+= 1-ratio;
+		}
+		
+	
+	}
+	
+	for (unordered_map<string,unordered_map<string,double>>::iterator it=this->histoStringRef.begin(); it!=this->histoStringRef.end(); ++it){
+		string value = emp.getAttrString()[it->first];
+		for (unordered_map<string,double>::iterator it2=it->second.begin(); it2!=it->second.end(); ++it2){
+			if(value==it2->first){
+				somme+=it2->second;
+				break;
+			}
+		}
+	}
+	
+	nbAttributs = histoDoubleRef.size() + histoStringRef.size();
+	risque = (somme>0 ? (somme/ nbAttributs) * 100.0 : 0);
 	
 	return risque;
 }
