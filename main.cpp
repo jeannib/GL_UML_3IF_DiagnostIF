@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include "Analyseur.h"
+#include <sstream>
 
 using namespace std;
 
@@ -9,38 +10,58 @@ void menu();
 
 int main()
 {
-	/*ifstream ficConfig("config.txt");
-	string line;
-	while (getline(ficConfig, line)) {
-		string noid = line.substr(0, line.find_first_of(';'));
-		cout << noid << endl;
-	}*/
-
+	bool connection = false;
 	string id, mdp;
-	cout << "Identifiant  :" << endl;
-	cin >> id;
-	ifstream user("users/" + id);
-	if (user.is_open())
-	{
-		cout << "Mot de passe :" << endl;
-		cin >> mdp;
-		string line;
-		getline(user, line);
-		if(line == mdp)
+	cout << "Bienvenue sur l'application Diagnost'IF !" << endl;
+	
+	while(connection!=true){
+		cout << "Identifiant" << endl;
+		cin >> id;
+		ifstream user("users/" + id);
+		if (user.is_open())
 		{
-			cout << "Connecte" << endl;
-			menu();
+			cout << "Mot de passe" << endl;
+			cin >> mdp;
+			string line;
+			getline(user, line);
+			if(line == mdp)
+			{
+				connection=true;
+				cout << "Connecte avec succes" << endl;
+				menu();
+			}
+			else
+			{
+				cout << "Connexion echouee (mot de passe invalide), veuillez reessayer" << endl;
+			}
 		}
 		else
 		{
-			cout << "Mot de passe invalide" << endl;
+			cout << "Connexion echouee (identifiant non reconnu), veuillez reessayer" << endl;
 		}
+    
 	}
-	else
-	{
-		cout << "Utilisateur inexistant." << endl;
-	}
-    return 0;
+	return 0;
+}
+
+int getInt()
+{
+    int x=0;
+    bool loop=true;
+    while(loop)
+    {
+        std::string s;
+        std::getline(std::cin, s);
+
+        std::stringstream stream(s);
+        if(stream >> x)
+        {
+            loop=false;
+            continue;
+        }
+        std::cout << "Invalid!" << std::endl;
+    }
+    return x;
 }
 
 void menu() {
@@ -54,7 +75,7 @@ void menu() {
 		cout << "4 -  Afficher la liste des maladies" << endl;
 		cout << "5 -  Afficher l'historique" << endl;
 		cout << "6 -  Se déconnecter" << endl;
-		cin >> choix;
+		choix = getInt();
 		switch (choix) {
 		case 1 :
 		{
@@ -104,13 +125,20 @@ void menu() {
 					cout << "Maladie introuvable dans nos données" << endl;
 				}
 			}
+			
 		}
 			break;
 			
 		case 4:
 			analyseur.afficherMaladies();
 			break;
+		case 6 :
+			break;
+		default : 
+			cout<<"Entrez une valeur entre 1 et 6 !"<<endl;
+            break;
 		}
 	} while (choix != 6);
 }
+
 

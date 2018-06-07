@@ -109,7 +109,7 @@ double Maladie::analyserEmpreinte(EmpreintePatient emp)
 		square=sqrt(puissance);
 		ratio=square/(3*it->second.second);
 		if(ratio>1){
-			somme-= abs(1-ratio);
+			somme+= 1-ratio;
 		}
 		else{
 			somme+= 1-ratio;
