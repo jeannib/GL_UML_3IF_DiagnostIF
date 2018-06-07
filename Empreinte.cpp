@@ -29,6 +29,8 @@ Empreinte::Empreinte(string attributs, string valeurs, unordered_map<string,stri
 	do{
 		string key = attributs.substr(0,attributs.find_first_of(';'));
 		string value = valeurs.substr(0,valeurs.find_first_of(';'));
+		if(key == "NoID")
+			this-> id = atoi(value.c_str());
 		
 		attributs.erase(0,attributs.find_first_of(';')+1);
 		valeurs.erase(0,valeurs.find_first_of(';')+1);
@@ -49,6 +51,10 @@ unordered_map<string, double> Empreinte::getAttrDouble(){
 
 unordered_map<string, string> Empreinte::getAttrString(){
 	return this->attrString;
+}
+
+int Empreinte::getID(){
+	return this->id;
 }
 
 

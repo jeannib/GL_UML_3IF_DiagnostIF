@@ -41,11 +41,6 @@ Analyseur::~Analyseur()
 
 } //----- Fin de ~Analyseur
 
-EmpreintePatient Analyseur::chargerPatient(string line)
-{
-	
-}
-
 void Analyseur::chargerBD(ifstream& ficRef, ifstream& ficConfig)
 {
 	this->maladies.clear();
@@ -97,9 +92,32 @@ void Analyseur::afficherMaladies(){
 	}
 }
 
+void Analyseur::afficherHistorique(){
+	extern string USER;
+	ifstream historic("historic/"+USER);
+	if (historic.is_open())
+	{
+		string line;
+		while(getline(historic, line)){
+			cout << line << endl;
+		}
+	}
+}
+
 void Analyseur::depistageSpecifique(EmpreintePatient emp, Maladie m){
 	double risque = m.analyserEmpreinte(emp);
-	cout<<m.getNom()<<" : " <<risque<<"\n";
+	string result = "Empreinte "+to_string(emp.getID())+" a "+to_string(int(risque))+"% de risque d'avoir "+m.getNom();
+	cout << result << endl;
+	extern string USER;
+	ofstream historic("historic/"+USER , ios::out | ios::app);
+	historic << result << endl;
+	historic.close();
+}
+
+void Analyseur::depistageGeneral(EmpreintePatient emp){
+	for(Maladie m : this->maladies){
+		this->depistageSpecifique(emp,m);
+	}
 }
 
 Maladie* Analyseur::findMaladie(string mal)
