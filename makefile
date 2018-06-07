@@ -3,11 +3,11 @@ COMP=g++
 EDL=g++
 RMFLAGS=-f
 COMPFLAGS = -ansi -pedantic  -Wall -std=c++11 -g
-#make DEBUG=no pour compiler en release.
 DEBUG=no
-EXE=application
+EXE=diagnostif
 EXEPATH=./
-SRC=$(wildcard *.cpp)
+SPEC=$(wildcard *.h)
+SRC=$(SPEC:.h=.cpp)
 OBJ=$(SRC:.cpp=.o)
 
 ifeq ($(DEBUG),yes)
@@ -17,15 +17,28 @@ else
 endif
 
 
+
 all:$(EXEPATH)$(EXE)
+	
 
 $(EXEPATH)$(EXE): $(OBJ)
-	$(EDL) -o $(EXEPATH)$(EXE) $(OBJ)
+	$(EDL) -o $(EXEPATH)$(EXE) $(OBJ) main.o
 
 %.o: %.cpp
-	$(COMP) -c $< $(COMPFLAGS) $(DEFINE_DEBUG) $(DEFINE_LOGIN)
-	
+	$(COMP) -c $< $(COMPFLAGS) $(DEFINE_DEBUG) $(DEFINE_LOGIN) main.cpp
+
+
+
 .PHONY:clean tests
 
 clean:
-	$(RM) $(RMFLAGS) *.o $(EXEPATH)$(EXE)
+	$(RM) $(RMFLAGS) *.o $(EXEPATH)$(EXE) ./test
+
+
+test:
+	$(RM) $(RMFLAGS) *.o ./test
+	$(COMP) -c $(SRC) unittest.cpp $(COMPFLAGS) $(DEFINE_DEBUG) $(DEFINE_LOGIN)
+	$(EDL) -o ./test $(OBJ) unittest.o
+	./test
+	$(RM) $(RMFLAGS) *.o ./test
+
