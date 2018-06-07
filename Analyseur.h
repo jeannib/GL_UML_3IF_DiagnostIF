@@ -50,11 +50,13 @@ public:
 	
 	void afficherMaladies();
 	
+	void afficherHistorique();
+	
 	Maladie* findMaladie(string mal);
 	
-	void depistageSpecifique(EmpreintePatient emp, Maladie m);
+	void depistageGeneral(EmpreintePatient emp);
 	
-	EmpreintePatient chargerPatient(string line);
+	void depistageSpecifique(EmpreintePatient emp, Maladie m);
 	
 	unordered_map<string,string> getConfig();
 

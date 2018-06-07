@@ -6,6 +6,8 @@
 
 using namespace std;
 
+string USER; 
+
 void menu();
 
 int main()
@@ -34,6 +36,9 @@ int main()
 			{
 				cout << "Connexion echouee (mot de passe invalide), veuillez reessayer" << endl;
 			}
+			cout << "Connecte" << endl;
+			USER = id;
+			menu();
 		}
 		else
 		{
@@ -118,9 +123,6 @@ void menu() {
 						EmpreintePatient empreinte(attr, line, analyseur.getConfig());
 						analyseur.depistageSpecifique(empreinte, m);
 					}
-					
-					//m.displayCaracs();
-					//analyseur.depistageSpecifique(empreinte, m);
 				}else{
 					cout << "Maladie introuvable dans nos données" << endl;
 				}

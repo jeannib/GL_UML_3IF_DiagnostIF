@@ -50,7 +50,6 @@ void Maladie::displayCaracs() const
 		cout << "Personne saine" << endl;
 	}else{
 		cout << this->getNom() << endl;
-		cout << this->getNom().length() << endl;
 	}
 	
 	
@@ -74,12 +73,10 @@ void Maladie::ajouterEmpreinte(EmpreinteReference empreinte)
 	for(auto attrDouble : empreinte.getAttrDouble()){
 		pair<double,double> paire(histoDoubleRef[attrDouble.first].first+attrDouble.second,histoDoubleRef[attrDouble.first].second+attrDouble.second*attrDouble.second);
 		this->histoDoubleRef[attrDouble.first] = paire;
-		//nbAttributs++;
 	}
 	
 	for(auto attrString : empreinte.getAttrString()){
 		this->histoStringRef[attrString.first][attrString.second]+=1;
-		//nbAttributs++;
 	}
 	
 	this->nbEmpreintes++;

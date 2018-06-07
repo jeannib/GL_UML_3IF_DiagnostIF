@@ -39,6 +39,8 @@ public:
 	unordered_map<string, double> getAttrDouble();
 	
 	unordered_map<string, string> getAttrString();
+	
+	int getID();
 
 	virtual ~Empreinte();
 
@@ -50,6 +52,7 @@ protected:
 	//----------------------------------------------------- Attributs protégés
 	unordered_map<string, double> attrDouble;
 	unordered_map<string, string> attrString;
+	int id;
 
 };
 
