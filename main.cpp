@@ -6,7 +6,7 @@
 
 using namespace std;
 
-string USER; 
+string USER=""; 
 
 void menu();
 
@@ -30,15 +30,13 @@ int main()
 			{
 				connection=true;
 				cout << "Connecte avec succes" << endl;
+				USER = id;
 				menu();
 			}
 			else
 			{
 				cout << "Connexion echouee (mot de passe invalide), veuillez reessayer" << endl;
 			}
-			cout << "Connecte" << endl;
-			USER = id;
-			menu();
 		}
 		else
 		{
