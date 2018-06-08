@@ -46,10 +46,12 @@ unordered_map<string, unordered_map<string, double>> Maladie::getCaracsString()
 
 void Maladie::displayCaracs() const
 {
+    char esc_char = 27; // the decimal code for escape character is 27
+    cout<<"\r\n"<<endl;
 	if(this->getNom() == ""){
-		cout << "Personne saine" << endl;
+		cout << esc_char << "[1m" <<"Personne saine" << esc_char << "[0m"<< endl;
 	}else{
-		cout << this->getNom() << endl;
+		cout << esc_char << "[1m" << this->getNom() << esc_char << "[0m" << endl;
 	}
 	
 	
@@ -62,7 +64,7 @@ void Maladie::displayCaracs() const
 	   cout << "Attribut : " << elem.first;
 	   for(auto newElem : elem.second)
 	   {
-			cout << "; Valeur : " << newElem.first << "; Frequence : " << newElem.second;
+			cout << " ; Valeur : " << newElem.first << "; Frequence : " << newElem.second;
 		}
 		cout<<"\n";
 	}
