@@ -115,9 +115,14 @@ void Analyseur::depistageSpecifique(EmpreintePatient emp, Maladie m){
 }
 
 void Analyseur::depistageGeneral(EmpreintePatient emp){
+	extern string USER;
+	ofstream historic("historic/"+USER , ios::out | ios::app);
+	historic << "-------------------------------------------" << endl;
+	historic.close();
 	for(Maladie m : this->maladies){
 		this->depistageSpecifique(emp,m);
 	}
+	
 }
 
 Maladie* Analyseur::findMaladie(string mal)
