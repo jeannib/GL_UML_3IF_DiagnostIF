@@ -104,7 +104,7 @@ void Analyseur::afficherHistorique(){
 	}
 }
 
-void Analyseur::depistageSpecifique(EmpreintePatient emp, Maladie m){
+void Analyseur::depistageSpecifique(Empreinte emp, Maladie m){
 	double risque = m.analyserEmpreinte(emp);
 	string result = "Empreinte "+to_string(emp.getID())+" a "+to_string(int(risque))+"% de risque d'avoir "+m.getNom();
 	cout << result << endl;
@@ -114,11 +114,7 @@ void Analyseur::depistageSpecifique(EmpreintePatient emp, Maladie m){
 	historic.close();
 }
 
-void Analyseur::depistageGeneral(EmpreintePatient emp){
-	extern string USER;
-	ofstream historic("historic/"+USER , ios::out | ios::app);
-	historic << "-------------------------------------------" << endl;
-	historic.close();
+void Analyseur::depistageGeneral(Empreinte emp){
 	for(Maladie m : this->maladies){
 		this->depistageSpecifique(emp,m);
 	}

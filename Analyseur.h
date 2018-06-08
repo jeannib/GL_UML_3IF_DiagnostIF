@@ -54,9 +54,9 @@ public:
 	
 	Maladie* findMaladie(string mal);
 	
-	void depistageGeneral(EmpreintePatient emp);
+	void depistageGeneral(Empreinte emp);
 	
-	void depistageSpecifique(EmpreintePatient emp, Maladie m);
+	void depistageSpecifique(Empreinte emp, Maladie m);
 	
 	unordered_map<string,string> getConfig();
 

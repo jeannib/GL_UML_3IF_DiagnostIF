@@ -15,7 +15,7 @@ e-mail               : vincent.colonges@insa-lyon.fr
 #include <string>
 #include <unordered_map>
 #include "EmpreinteReference.h"
-#include "EmpreintePatient.h"
+#include "Empreinte.h"
 #include <math.h>
 
 using namespace std;
@@ -53,7 +53,7 @@ public:
 	
 	void finaliser();
 	
-	double analyserEmpreinte(EmpreintePatient emp);
+	double analyserEmpreinte(Empreinte emp);
 	//------------------------------------------------------------------ PRIVE
 
 protected:

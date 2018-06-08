@@ -21,7 +21,7 @@ int main()
 	
 	char esc_char = 27; // the decimal code for escape character is 27
 
-	cout << "\r\nBienvenue sur l'application"<<esc_char << "[1;31m" << " Diagnost'IF !\r\n" << esc_char << "[0m"  << endl;
+	cout << "\r\nBienvenue sur l'application"<<esc_char << "[1;34m" << " Diagnost'IF !\r\n" << esc_char << "[0m"  << endl;
 	
 	while(connection!=true){
 		cout << "Identifiant" << endl;
@@ -84,8 +84,12 @@ void chargerFichierRef(Analyseur * analyseur)
 		if (ficConf.is_open())
 		{
 			analyseur->chargerBD(ficRef, ficConf);
-		}
-	}
+		}else{
+            cout<< "Fichier de configuration introuvable, veuillez reessayer" <<endl;
+        }
+	} else {
+        cout<< "Fichier de reference introuvable, veuillez reesayer"<<endl;
+    }
 }
 void menu(Analyseur a) {
 	int choix=0;
@@ -118,7 +122,25 @@ void menu(Analyseur a) {
 		switch (choix) {
 		
 		case 1:
-			cout << "1" << endl;
+			{
+			string emp;
+			cout << "Empreinte a analyser" <<endl;
+			cin>> emp;
+			ifstream ficEmp(emp);
+			if(ficEmp.is_open())
+			{
+					string line, attr;
+					getline(ficEmp, attr);
+					while(getline(ficEmp, line)){
+						Empreinte empreinte(attr, line, analyseur.getConfig());
+						analyseur.depistageGeneral(empreinte);
+                        cout<<"\r\n"<<endl;
+					}
+					
+			}else{
+				cout<< "Empreinte introuvable\r\n"<<endl;
+			}
+		}
 			break;
 		case 2:
 		{
@@ -136,7 +158,7 @@ void menu(Analyseur a) {
 					string line, attr;
 					getline(ficEmp, attr);
 					while(getline(ficEmp, line)){
-						EmpreintePatient empreinte(attr, line, analyseur.getConfig());
+						Empreinte empreinte(attr, line, analyseur.getConfig());
 						analyseur.depistageSpecifique(empreinte, m);
 					}
 				}else{
@@ -151,6 +173,11 @@ void menu(Analyseur a) {
 		case 3:
 			analyseur.afficherMaladies();
 			break;
+        case 4 :
+            break;
+        case 5 :
+            analyseur.afficherHistorique();
+            break;
 		case 6 :
 			chargerFichierRef(&analyseur);
 			break;
