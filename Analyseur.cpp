@@ -86,9 +86,13 @@ void Analyseur::chargerBD(ifstream& ficRef, ifstream& ficConfig)
 	//---
 }
 
-void Analyseur::afficherMaladies(){
+void Analyseur::afficherMaladies(bool caracs){
 	for(Maladie m : this->maladies){
-		m.displayCaracs();
+        if(caracs){
+            m.displayCaracs();
+        }else{
+            cout<<m.getNom()<<endl;
+        }
 	}
 }
 
@@ -106,12 +110,14 @@ void Analyseur::afficherHistorique(){
 
 void Analyseur::depistageSpecifique(Empreinte emp, Maladie m){
 	double risque = m.analyserEmpreinte(emp);
-	string result = "Empreinte "+to_string(emp.getID())+" a "+to_string(int(risque))+"% de risque d'avoir "+m.getNom();
-	cout << result << endl;
-	extern string USER;
-	ofstream historic("historic/"+USER , ios::out | ios::app);
-	historic << result << endl;
-	historic.close();
+    if(!(m.getNom()=="")){
+        string result = "Empreinte "+to_string(emp.getID())+" a "+to_string(int(risque))+"% de risque d'avoir "+m.getNom();
+        cout << result << endl;
+        extern string USER;
+        ofstream historic("historic/"+USER , ios::out | ios::app);
+        historic << result << endl;
+        historic.close();
+    }
 }
 
 void Analyseur::depistageGeneral(Empreinte emp){

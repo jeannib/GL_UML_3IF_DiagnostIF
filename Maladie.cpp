@@ -57,14 +57,14 @@ void Maladie::displayCaracs() const
 	
 	for(auto elem : this->histoDoubleRef)
 	{
-	   cout << "Attribut : " << elem.first << " ; Moyenne : " << elem.second.first << " ; Ecart-type : "<< elem.second.second << "\n";
+	   cout << "[ " << elem.first << " ] Moyenne : " << elem.second.first << " ; Ecart-type : "<< elem.second.second << "\n";
 	}
 	for(auto elem : this->histoStringRef)
 	{
-	   cout << "Attribut : " << elem.first;
+	   cout << "[ " << elem.first;
 	   for(auto newElem : elem.second)
 	   {
-			cout << " ; Valeur : " << newElem.first << "; Frequence : " << newElem.second;
+			cout << "] Valeur : " << newElem.first << "; Frequence : " << newElem.second;
 		}
 		cout<<"\n";
 	}

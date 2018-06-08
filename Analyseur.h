@@ -48,7 +48,7 @@ public:
 	
 	void chargerBD(ifstream& ficRef, ifstream& ficConfig);
 	
-	void afficherMaladies();
+	void afficherMaladies(bool caracs);
 	
 	void afficherHistorique();
 	
