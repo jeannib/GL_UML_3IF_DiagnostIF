@@ -45,13 +45,24 @@ void testChargerEmpreinteReference(){
 	}
 }
 
-void testFindMaladie(){
+void testFindMaladieExistante(){
 	tot++;
 	Maladie m = *analyseur.findMaladie("M1");
 	if(m.getNom() != "M1"){
-		cerr << "\033[31m"<< "-- Erreur testFindMaladie" << endl << "	Valeur attendue : M1" << endl << "	Valeur obtenue : " << m.getNom() << endl<<"\033[0m";
+		cerr << "\033[31m"<< "-- Erreur testFindMaladieExistante" << endl << "	Valeur attendue : M1" << endl << "	Valeur obtenue : " << m.getNom() << endl<<"\033[0m";
 	}else{
-		cout << "testFindMaladie" << endl;
+		cout << "testFindMaladieExistante" << endl;
+		wins++;
+	}
+}
+
+void testFindMaladieInexistante(){
+	tot++;
+	if(analyseur.findMaladie("B")!=nullptr)
+	{
+		cerr << "\033[31m"<< "-- Erreur testFindMaladieInexistante" << endl << "	Valeur attendue : nullptr" << endl << "	Valeur obtenue : " << analyseur.findMaladie("B")<< endl<<"\033[0m";
+	}else{
+		cout << "testFindMaladieInexistante" << endl;
 		wins++;
 	}
 }
@@ -154,7 +165,8 @@ int main()
 	testAnalyserEmpreintePasMalade();
 	testChargerMaladieNonFinalise();
 	testChargerMaladieFinalise();
-	testFindMaladie();
+	testFindMaladieExistante();
+    testFindMaladieInexistante();
 	if(wins==tot){
 		cout << endl << "\033[32m"<< "Tests reussis : " << wins << "/" << tot << endl << "\033[0m";
 	}else{
