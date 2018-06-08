@@ -124,6 +124,7 @@ void Analyseur::depistageGeneral(Empreinte emp){
 	for(Maladie m : this->maladies){
 		this->depistageSpecifique(emp,m);
 	}
+	
 }
 
 Maladie* Analyseur::findMaladie(string mal)

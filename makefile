@@ -35,10 +35,9 @@ clean:
 	$(RM) $(RMFLAGS) *.o $(EXEPATH)$(EXE) ./test
 
 
-test:
-	$(RM) $(RMFLAGS) *.o ./test
-	$(COMP) -c $(SRC) unittest.cpp $(COMPFLAGS) $(DEFINE_DEBUG) $(DEFINE_LOGIN)
-	$(EDL) -o ./test $(OBJ) unittest.o
-	./test
-	$(RM) $(RMFLAGS) *.o ./test
+test:$(OBJ)
+	@$(COMP) -c unittest.cpp
+	@$(EDL) -o ./test $(OBJ) unittest.o
+	@./test
+	@$(RM) ./test
 

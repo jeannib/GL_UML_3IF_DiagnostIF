@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include "math.h"
 #include "Empreinte.h"
-#include "EmpreintePatient.h"
 #include "EmpreinteReference.h"
 #include "Analyseur.h"
 int wins=0;
@@ -11,7 +11,6 @@ string USER;
 
 void testChargerEmpreinte(){
 	tot++;
-	cout << "testChargerEmpreinte" << endl;
 	string attributs = "NoID;A1;A2;";
 	string valeurs = "1;True;2.12";
 	Empreinte empreinte(attributs,valeurs,analyseur.getConfig());
@@ -22,31 +21,48 @@ void testChargerEmpreinte(){
 	}else if(empreinte.getAttrString()["A1"] != "True"){
 		cerr << "\033[31m"<< "-- Erreur testChargerEmpreinte" << endl << "	Valeur attendue : True" << endl << "	Valeur obtenue : " << empreinte.getAttrDouble()["A1"] << endl<<"\033[0m";
 	}else{
+		cout << "testChargerEmpreinte" << endl;
 		wins++;
 	}
 }
 
 void testChargerEmpreinteReference(){
 	tot++;
-	cout << "testChargerEmpreinteReference" << endl;
-	//TODO
+	string attributs = "NoID;A1;A2;Disease";
+	string valeurs = "1;True;2.12;M1";
+	EmpreinteReference empreinte(attributs,valeurs,analyseur.getConfig());
+	if(empreinte.getID() != 1){
+		cerr << "\033[31m"<< "-- Erreur testChargerEmpreinte" << endl << "	Valeur attendue : 1" << endl << "	Valeur obtenue : " << empreinte.getID() << endl<<"\033[0m";
+	}else if(empreinte.getAttrDouble()["A2"] != 2.12){
+		cerr << "\033[31m"<< "-- Erreur testChargerEmpreinte" << endl << "	Valeur attendue : 2.12" << endl << "	Valeur obtenue : " << empreinte.getAttrDouble()["A2"] << endl<<"\033[0m";
+	}else if(empreinte.getAttrString()["A1"] != "True"){
+		cerr << "\033[31m"<< "-- Erreur testChargerEmpreinte" << endl << "	Valeur attendue : True" << endl << "	Valeur obtenue : " << empreinte.getAttrDouble()["A1"] << endl<<"\033[0m";
+	}else if(empreinte.getMaladie() != "M1"){
+		cerr << "\033[31m"<< "-- Erreur testChargerEmpreinte" << endl << "	Valeur attendue : M1" << endl << "	Valeur obtenue : " << empreinte.getMaladie() << endl<<"\033[0m";
+	}else{
+		cout << "testChargerEmpreinteReference" << endl;
+		wins++;
+	}
 }
 
 void testFindMaladie(){
 	tot++;
-	cout << "testFindMaladie" << endl;
-	//TODO
+	Maladie m = *analyseur.findMaladie("M1");
+	if(m.getNom() != "M1"){
+		cerr << "\033[31m"<< "-- Erreur testFindMaladie" << endl << "	Valeur attendue : M1" << endl << "	Valeur obtenue : " << m.getNom() << endl<<"\033[0m";
+	}else{
+		cout << "testFindMaladie" << endl;
+		wins++;
+	}
 }
 
 void testChargerBD(){
 	tot++;
-	cout << "testChargerBD" << endl;
 	ifstream config;
 	config.open("tests/conf");
 	ifstream refs;
 	refs.open("tests/refs");
 	analyseur.chargerBD(refs,config);
-	
 	if(analyseur.getConfig()["A1"] != "string"){
 		cerr << "\033[31m"<< "-- Erreur testChargerBD" << endl << "	Valeur attendue : string" << endl << "	Valeur obtenue : " << analyseur.getConfig()["A1"] << endl<<"\033[0m";
 	}else if(analyseur.getConfig()["A2"] != "double"){
@@ -54,42 +70,79 @@ void testChargerBD(){
 	}else if(analyseur.getConfig()["NoID"] != "ID"){
 		cerr << "\033[31m" << "-- Erreur testChargerBD" << endl << "	Valeur attendue : ID" << endl << "	Valeur obtenue : " << analyseur.getConfig()["NoID"] << endl <<"\033[0m";	
 	}else{
+		cout << "testChargerBD" << endl;
 		wins++;
 	}
 }
 
 void testAnalyserEmpreinteMalade(){
 	tot++;
-	cout << "testAnalyserEmpreinteMalade" << endl;
 	string attributs = "NoID;A1;A2;";
 	string valeurs = "1;True;2.12";
-	EmpreintePatient empreinte(attributs,valeurs,analyseur.getConfig());
+	Empreinte empreinte(attributs,valeurs,analyseur.getConfig());
 	Maladie m = *analyseur.findMaladie("M1");
 	if(int(m.analyserEmpreinte(empreinte)) < 50){
 		cerr << "\033[31m"<< "-- Erreur testChargerEmpreinte" << endl << "	Valeur attendue : > 50" << endl << "	Valeur obtenue : " << m.analyserEmpreinte(empreinte) << endl<<"\033[0m";
 	}else{
+		cout << "testAnalyserEmpreinteMalade" << endl;
 		wins++;
 	}
 }
 
 void testAnalyserEmpreintePasMalade(){
 	tot++;
-	cout << "testAnalyserEmpreintePasMalade" << endl;
 	string attributs = "NoID;A1;A2;";
 	string valeurs = "1;False;15";
-	EmpreintePatient empreinte(attributs,valeurs,analyseur.getConfig());
+	Empreinte empreinte(attributs,valeurs,analyseur.getConfig());
 	Maladie m = *analyseur.findMaladie("M1");
 	if(int(m.analyserEmpreinte(empreinte)) > 50){
 		cerr << "\033[31m"<< "-- Erreur testChargerEmpreinte" << endl << "	Valeur attendue : < 40" << endl << "	Valeur obtenue : " << m.analyserEmpreinte(empreinte) << endl<<"\033[0m";
 	}else{
+		cout << "testAnalyserEmpreintePasMalade" << endl;
 		wins++;
 	}
 }
 
-void testChargerMaladie(){
+void testChargerMaladieNonFinalise(){
 	tot++;
-	cout << "testChargerMaladie" << endl;
-	//TODO
+	Maladie m("M1");
+	string attributs = "NoID;A1;A2;Disease";
+	string valeurs = "1;True;2.12;M1";
+	EmpreinteReference empreinte(attributs,valeurs,analyseur.getConfig());
+	m.ajouterEmpreinte(empreinte);
+	if(m.getCaracsDouble()["A2"].first != 2.12){
+		cerr << "\033[31m"<< "-- Erreur testChargerMaladie" << endl << "	Valeur attendue : 2.12" << endl << "	Valeur obtenue : " << m.getCaracsDouble()["A2"].first << endl<<"\033[0m";
+	}else if(m.getCaracsDouble()["A2"].second != pow(2.12,2)){
+		cerr << "\033[31m"<< "-- Erreur testChargerMaladie" << endl << "	Valeur attendue : 4.4944" << endl << "	Valeur obtenue : " << m.getCaracsDouble()["A2"].second << endl<<"\033[0m";
+	}else if(m.getCaracsString()["A1"]["True"] != 1){
+		cerr << "\033[31m"<< "-- Erreur testChargerMaladie" << endl << "	Valeur attendue : 1" << endl << "	Valeur obtenue : " << m.getCaracsString()["A1"]["True"] << endl<<"\033[0m";
+	}else{
+		cout << "testChargerMaladieNonFinalise" << endl;
+		wins++;
+	}
+}
+
+void testChargerMaladieFinalise(){
+	tot++;
+	Maladie m("M1");
+	string attributs = "NoID;A1;A2;Disease";
+	string valeurs1 = "1;True;2;M1";
+	EmpreinteReference empreinte1(attributs,valeurs1,analyseur.getConfig());
+	m.ajouterEmpreinte(empreinte1);
+	string valeurs2 = "1;False;4;M1";
+	EmpreinteReference empreinte2(attributs,valeurs2,analyseur.getConfig());
+	m.ajouterEmpreinte(empreinte2);
+	m.finaliser();
+	if(m.getCaracsDouble()["A2"].first != 3){
+		cerr << "\033[31m"<< "-- Erreur testChargerMaladie" << endl << "	Valeur attendue : 3" << endl << "	Valeur obtenue : " << m.getCaracsDouble()["A2"].first << endl<<"\033[0m";
+	}else if(m.getCaracsDouble()["A2"].second != 1){
+		cerr << "\033[31m"<< "-- Erreur testChargerMaladie" << endl << "	Valeur attendue : 0" << endl << "	Valeur obtenue : " << m.getCaracsDouble()["A2"].second << endl<<"\033[0m";
+	}else if(m.getCaracsString()["A1"]["True"] != 0.5){
+		cerr << "\033[31m"<< "-- Erreur testChargerMaladie" << endl << "	Valeur attendue : 0.5" << endl << "	Valeur obtenue : " << m.getCaracsString()["A1"]["True"] << endl<<"\033[0m";
+	}else{
+		cout << "testChargerMaladieFinalise" << endl;
+		wins++;
+	}
 }
 
 int main()
@@ -99,6 +152,12 @@ int main()
 	testChargerEmpreinteReference();
 	testAnalyserEmpreinteMalade();
 	testAnalyserEmpreintePasMalade();
-	testChargerMaladie();
-	cout << endl << "\033[32m"<< "Tests reussis : " << wins << "/" << tot << endl << "\033[0m";
+	testChargerMaladieNonFinalise();
+	testChargerMaladieFinalise();
+	testFindMaladie();
+	if(wins==tot){
+		cout << endl << "\033[32m"<< "Tests reussis : " << wins << "/" << tot << endl << "\033[0m";
+	}else{
+		cout << endl << "\033[31m"<< "Tests reussis : " << wins << "/" << tot << endl << "\033[0m";
+	}
 }
