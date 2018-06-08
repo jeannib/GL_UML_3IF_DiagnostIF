@@ -21,7 +21,7 @@ int main()
 	
 	char esc_char = 27; // the decimal code for escape character is 27
 
-	cout << "\r\nBienvenue sur l'application"<<esc_char << "[1;31m" << " Diagnost'IF !\r\n" << esc_char << "[0m"  << endl;
+	cout << "\r\nBienvenue sur l'application"<<esc_char << "[1;34m" << " Diagnost'IF !\r\n" << esc_char << "[0m"  << endl;
 	
 	while(connection!=true){
 		cout << "Identifiant" << endl;
@@ -132,7 +132,7 @@ void menu(Analyseur a) {
 					string line, attr;
 					getline(ficEmp, attr);
 					while(getline(ficEmp, line)){
-						EmpreintePatient empreinte(attr, line, analyseur.getConfig());
+						Empreinte empreinte(attr, line, analyseur.getConfig());
 						analyseur.depistageGeneral(empreinte);
                         cout<<"\r\n"<<endl;
 					}
@@ -158,7 +158,7 @@ void menu(Analyseur a) {
 					string line, attr;
 					getline(ficEmp, attr);
 					while(getline(ficEmp, line)){
-						EmpreintePatient empreinte(attr, line, analyseur.getConfig());
+						Empreinte empreinte(attr, line, analyseur.getConfig());
 						analyseur.depistageSpecifique(empreinte, m);
 					}
 				}else{

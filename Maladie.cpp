@@ -99,7 +99,7 @@ void Maladie::finaliser()
 }
 
 
-double Maladie::analyserEmpreinte(EmpreintePatient emp)
+double Maladie::analyserEmpreinte(Empreinte emp)
 {
 	double risque=0, somme=0, square=0, puissance=0, ratio=0;
 	for (unordered_map<string,pair<double,double>>::iterator it=this->histoDoubleRef.begin(); it!=this->histoDoubleRef.end(); ++it){
