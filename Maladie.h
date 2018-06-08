@@ -48,12 +48,21 @@ public:
 	unordered_map<string, unordered_map<string, double>> getCaracsString();
 	
 	void displayCaracs() const;
+	// Description :
+	// Affiche les caracteristiques de la malaldie
 	
 	void ajouterEmpreinte(EmpreinteReference empreinte);
+	// Description :
+	// Ajoute une empreinte a la banque de donne de la maladie
 	
 	void finaliser();
+	// Description :
+	// Finalise les calculs (selon notre algorithme) necessaires pour pouvoir plus tard faire des analyse
 	
 	double analyserEmpreinte(Empreinte emp);
+	// Description :
+	// Renvoi la probabilite que emp soit atteinte par la maladie
+	
 	//------------------------------------------------------------------ PRIVE
 
 protected:

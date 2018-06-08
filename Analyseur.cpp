@@ -28,13 +28,6 @@ Analyseur::Analyseur()
 
 } //----- Fin de Analyseur
 
-Analyseur::Analyseur(ifstream ficRef, ifstream ficConfig)
-{
-	// Chargement de la configuration
-	
-} //----- Fin de Analyseur
-
-
 Analyseur::~Analyseur()
 {
 	config.clear();

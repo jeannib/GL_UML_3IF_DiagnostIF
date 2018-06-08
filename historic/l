@@ -1,0 +1,117 @@
+[1;34mChargement d'un fichier de reference
+Fichier reference tests/r10
+Fichier configuration tests/c4
+[0m
+[1;34mChargement d'un fichier de reference
+Fichier reference tests/r100
+Fichier configuration tests/c4
+[0m
+[1;34mChargement d'un fichier de reference
+Fichier reference tests/r1000
+Fichier configuration tests/c4
+[0m
+[1;34mChargement d'un fichier de reference
+Fichier reference tests/r10000
+Fichier configuration tests/c4
+[0m
+[1;34mChargement d'un fichier de reference
+Fichier reference tests/r100000
+Fichier configuration tests/c4
+[0m
+[1;34mChargement d'un fichier de reference
+Fichier reference tests/r100-2
+Fichier configuration tests/c2
+[0m
+[1;34mChargement d'un fichier de reference
+Fichier reference tests/r100
+Fichier configuration tests/c4
+[0m
+[1;34mChargement d'un fichier de reference
+Fichier reference tests/r100-8
+Fichier configuration tests/c8
+[0m
+[1;34mChargement d'un fichier de reference
+Fichier reference tests/r100-16
+Fichier configuration tests/c16
+[0m
+[1;34mChargement d'un fichier de reference
+Fichier reference tests/r10
+Fichier configuration tests/c4
+[0m
+[1;34mDepistage Specifique
+Empreinte tests/r1-4
+Maladie M1
+[0m
+Empreinte 0 a 81% de risque d'avoir M1
+[1;34mChargement d'un fichier de reference
+Fichier reference tests/r10
+Fichier configuration tests/c4
+[0m
+[1;34mDepistage Specifique
+Empreinte tests/r1-4
+Maladie M1
+[0m
+Empreinte 0 a 81% de risque d'avoir M1
+[1;34mChargement d'un fichier de reference
+Fichier reference tests/r100
+Fichier configuration tests/c4
+[0m
+[1;34mDepistage Specifique
+Empreinte tests/r1-4
+Maladie M1
+[0m
+Empreinte 0 a 76% de risque d'avoir M1
+[1;34mChargement d'un fichier de reference
+Fichier reference tests/r1000
+Fichier configuration tests/c4
+[0m
+[1;34mDepistage Specifique
+Empreinte tests/r1-4
+Maladie M1
+[0m
+Empreinte 0 a 77% de risque d'avoir M1
+[1;34mChargement d'un fichier de reference
+Fichier reference tests/r10000
+Fichier configuration tests/c4
+[0m
+[1;34mDepistage Specifique
+Empreinte tests/r1-4
+Maladie M1
+[0m
+Empreinte 0 a 75% de risque d'avoir M1
+[1;34mChargement d'un fichier de reference
+Fichier reference tests/r100000
+Fichier configuration tests/c4
+[0m
+[1;34mDepistage Specifique
+Empreinte tests/r1-4
+Maladie M1
+[0m
+Empreinte 0 a 75% de risque d'avoir M1
+[1;34mChargement d'un fichier de reference
+Fichier reference tests/r100-2
+Fichier configuration tests/c2
+[0m
+[1;34mDepistage Specifique
+Empreinte tests/r1-2
+Maladie M1
+[0m
+Empreinte 0 a 0% de risque d'avoir M1
+[1;34mChargement d'un fichier de reference
+Fichier reference tests/r100-8
+Fichier configuration tests/c8
+[0m
+[1;34mDepistage Specifique
+Empreinte tests/r1-8
+Maladie M1
+[0m
+Empreinte 0 a 81% de risque d'avoir M1
+[1;34mChargement d'un fichier de reference
+Fichier reference tests/r100-16
+Fichier configuration tests/c16
+[0m
+[1;34mDepistage Specifique
+Empreinte tests/r1-16
+Maladie M1
+[0m
+Empreinte 0 a 81% de risque d'avoir M1
