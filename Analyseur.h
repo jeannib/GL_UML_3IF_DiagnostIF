@@ -41,22 +41,34 @@ public:
 
 	//-------------------------------------------- Constructeurs - destructeur
 	Analyseur();
-	
-	Analyseur(ifstream ficRef, ifstream ficConfig);
 
 	virtual ~Analyseur();
 	
 	void chargerBD(ifstream& ficRef, ifstream& ficConfig);
+	// Description :
+	// Charge la configuration dans la map "config"
+	// Puis crée les maladies grace aux empreintes présentes dans le fichier de reference
 	
 	void afficherMaladies(bool caracs);
+	// Description :
+	// Si caracs = false affiche la liste des maladies
+	// Si carac = true affiche la liste des maladies et leurs caractéristiques
 	
 	void afficherHistorique();
+	// Description :
+	// Affiche l'historique de l'utilisateur courant
 	
 	Maladie* findMaladie(string mal);
+	// Description :
+	// Recherche une maladie dans la liste de maladies
 	
 	void depistageGeneral(Empreinte emp);
+	// Description :
+	// Lance un depistage de chaque maladie pour l'empreinte emp
 	
 	void depistageSpecifique(Empreinte emp, Maladie m);
+	// Description :
+	// Lance un depistage de la maladie m pour l'empreinte emp
 	
 	unordered_map<string,string> getConfig();
 

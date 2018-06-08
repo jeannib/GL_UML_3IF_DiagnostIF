@@ -91,9 +91,14 @@ void chargerFichierRef(Analyseur * analyseur)
             ficConf.open(strConf);
             if (ficConf.is_open())
             {
+	            //Test performance
+	            //clock_t t;
+				//t = clock();
                 ajouterAHistorique(5, "Fichier reference " + strRef + "\r\nFichier configuration " +strConf );
                 analyseur->chargerBD(ficRef, ficConf);
                 fichiersValides=true;
+                //t = clock() - t;
+                //cout << "Temps : " << ((float)t)/CLOCKS_PER_SEC ;
             }else{
                 cout<< "Fichier de configuration introuvable, veuillez reessayer" <<endl;
             }
@@ -207,7 +212,12 @@ void menu(Analyseur a) {
 					getline(ficEmp, attr);
 					while(getline(ficEmp, line)){
 						Empreinte empreinte(attr, line, analyseur.getConfig());
+						//Test performance
+					    //clock_t t;
+						//t = clock();
 						analyseur.depistageSpecifique(empreinte, m);
+						//t = clock() - t;
+                		//cout << "Temps : " << ((float)t)/CLOCKS_PER_SEC ;
 					}
 				}else{
 					cout << "Maladie introuvable dans nos donnees\r\n" << endl;

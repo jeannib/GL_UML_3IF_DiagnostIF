@@ -33,6 +33,10 @@ public:
 
 	//-------------------------------------------- Constructeurs - destructeur
 	EmpreinteReference(string attributs, string valeurs, unordered_map<string,string> config);
+	// Description :
+	// Creer une empreinte en creant les map "attrDouble" et "attrString" avec les valeurs fournies en entree
+	// grace a la configuration de l'analyseur et les attributs demandés
+	// Ajoute en plus la maladie dont est atteinte l'empreinte
 	
 	string getMaladie();
 

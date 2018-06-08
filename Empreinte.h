@@ -35,6 +35,9 @@ public:
 
 	//-------------------------------------------- Constructeurs - destructeur
 	Empreinte(string attributs, string valeurs, unordered_map<string,string> config);
+	// Description :
+	// Creer une empreinte en creant les map "attrDouble" et "attrString" avec les valeurs fournies en entree
+	// grace a la configuration de l'analyseur et les attributs demandés
 	
 	unordered_map<string, double> getAttrDouble();
 	
